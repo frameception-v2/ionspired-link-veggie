@@ -22,17 +22,54 @@ import { createStore } from "mipd";
 import { Label } from "~/components/ui/label";
 import { PROJECT_TITLE } from "~/lib/constants";
 
-function ExampleCard() {
+function LinkTreeCard() {
+  const openLink = useCallback((url: string) => {
+    sdk.actions.openUrl(url);
+  }, []);
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Welcome to the Frame Template</CardTitle>
+        <CardTitle>🌱 Veggie's Links</CardTitle>
         <CardDescription>
-          This is an example card that you can customize or remove
+          Connect with me across the web
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <Label>Place content in a Card here.</Label>
+      <CardContent className="flex flex-col gap-3">
+        <PurpleButton 
+          onClick={() => openLink(SOCIAL_LINKS.FARCASTER)}
+          className="w-full"
+        >
+          🏰 Farcaster Profile
+        </PurpleButton>
+        
+        <PurpleButton 
+          onClick={() => openLink(SOCIAL_LINKS.GITHUB)}
+          className="w-full"
+        >
+          👩💻 GitHub
+        </PurpleButton>
+
+        <div className="mt-4">
+          <Label className="text-sm font-semibold">Recent Shares</Label>
+          <div className="mt-2 space-y-2">
+            <PurpleButton
+              onClick={() => openLink(SOCIAL_LINKS.LATEST_POST)}
+              className="w-full text-sm"
+              variant="outline"
+            >
+              📖 Latest Article
+            </PurpleButton>
+            
+            <PurpleButton
+              onClick={() => openLink(SOCIAL_LINKS.PORTFOLIO)}
+              className="w-full text-sm"
+              variant="outline"
+            >
+              🎨 Portfolio
+            </PurpleButton>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
@@ -140,7 +177,7 @@ export default function Frame() {
         <h1 className="text-2xl font-bold text-center mb-4 text-gray-700 dark:text-gray-300">
           {PROJECT_TITLE}
         </h1>
-        <ExampleCard />
+        <LinkTreeCard />
       </div>
     </div>
   );
