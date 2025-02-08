@@ -3,8 +3,7 @@
 import { useEffect, useCallback, useState } from "react";
 import sdk, {
   AddFrame,
-  SignIn as SignInCore,
-  type Context,
+  type FrameContext,
 } from "@farcaster/frame-sdk";
 import {
   Card,
@@ -78,7 +77,7 @@ function LinkTreeCard() {
 
 export default function Frame() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  const [context, setContext] = useState<Context.FrameContext>();
+  const [context, setContext] = useState<FrameContext>();
 
   const [added, setAdded] = useState(false);
 
@@ -143,10 +142,10 @@ export default function Frame() {
       sdk.actions.ready({});
 
       // Set up a MIPD Store, and request Providers.
-      const store = createStore();
+      const store = mipd.createStore();
 
       // Subscribe to the MIPD Store.
-      store.subscribe((providerDetails) => {
+      store?.subscribe((providerDetails) => {
         console.log("PROVIDER DETAILS", providerDetails);
         // => [EIP6963ProviderDetail, EIP6963ProviderDetail, ...]
       });

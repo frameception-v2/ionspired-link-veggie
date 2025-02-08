@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/server";
 import { PROJECT_TITLE, PROJECT_DESCRIPTION } from "~/lib/constants";
 
 export const alt = PROJECT_TITLE;
