@@ -20,7 +20,8 @@ import { base, optimism } from "wagmi/chains";
 import { useSession } from "next-auth/react";
 import { createStore } from "mipd";
 import { Label } from "~/components/ui/label";
-import { PROJECT_TITLE } from "~/lib/constants";
+import { PurpleButton } from "~/components/ui/PurpleButton";
+import { PROJECT_TITLE, SOCIAL_LINKS } from "~/lib/constants";
 
 function LinkTreeCard() {
   const openLink = useCallback((url: string) => {
@@ -30,7 +31,7 @@ function LinkTreeCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>🌱 Veggie's Links</CardTitle>
+        <CardTitle>🌱 Veggie&apos;s Links</CardTitle>
         <CardDescription>
           Connect with me across the web
         </CardDescription>
